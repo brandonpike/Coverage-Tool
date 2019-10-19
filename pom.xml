@@ -15,6 +15,21 @@
 
     <build>
         <plugins>
+            <!-- NOTE: This is the example from the Course specification -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>-javaagent:[path-to-your-agent.jar]</argLine>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>[YourListener]</value>
+                        </property>
+                    </properties>
+                </configuration>
+            </plugin>
+            <!-- NOTE: End of example-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
