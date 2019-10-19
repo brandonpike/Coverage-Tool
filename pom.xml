@@ -24,12 +24,13 @@
                     <properties>
                         <property>
                             <name>listener</name>
-                            <value>[YourListener]</value>
+                            <value>ExecutionListener</value>
                         </property>
                     </properties>
                 </configuration>
             </plugin>
             <!-- NOTE: End of example-->
+            <!-- NOTE: Maybe delete the following plug in. What does it do?-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
