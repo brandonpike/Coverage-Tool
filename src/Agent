@@ -9,21 +9,7 @@ import java.security.ProtectionDomain;
 public class Agent {
   public static void premain(String agentArgs, Instrumentation inst) {
         inst.addTransformer(new Transformer() {
-            @Override
-            public byte[] transform(ClassLoader classLoader, String s, Class<?> aClass, ProtectionDomain protectionDomain, byte[] bytes) throws IllegalClassFormatException {
-
-                // Intercept the call to the class Stuff
-                if ("other/Stuff".equals(s)) {
-                    // ASM Code
-                    ClassReader reader = new ClassReader(bytes);
-                    ClassWriter writer = new ClassWriter(reader, 0);
-                    ClassPrinter visitor = new ClassPrinter(writer);
-                    reader.accept(visitor, 0);
-                    return writer.toByteArray();
-                }
-
-                return null;
-            }
+            inst.addTransformer(new #our_transformer_class#);
         }
     }
 }
