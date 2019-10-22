@@ -10,6 +10,10 @@ public class ExecutionListener extends RunListener {
   * not sure what i am doing
   **/
   
+  public void testRunStarted(Description desciption) throws Exception{
+    
+  }
+  
   public void testStarted(Description description) {
     //should capture when the method starts start recording...how?
       System.out.println("\n\n\nStarting .... " + description.getMethodName());
