@@ -7,9 +7,11 @@ public class ExecutionListener extends RunListener {
   * The following code is mostly from the example provided
   * https://memorynotfound.com/add-junit-listener-example/
   * https://dzone.com/articles/junit-listener
+  * not sure what i am doing
   **/
   
   public void testStarted(Description description) {
+    //should capture when the method starts start recording...how?
       System.out.println("\n\n\nStarting .... " + description.getMethodName());
   }
   public void testFinished(Description description) {
