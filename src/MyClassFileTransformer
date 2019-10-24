@@ -11,8 +11,9 @@ public class MyClassFileTransformer implements ClassFileTransformer{
             throws IllegalClassFormatException {
             
             if (#what to put here#){
-                //Based on code for agent in reference [5]
                 //Not sure what to put for the if statment
+                //class name or path?
+                // nameOfClass.startsWith("other/Stuff") or something like "other/Stuff".equals(s)
                 ClassReader reader = new ClassReader(bytes);
                 ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
                 ClassTransformVisitor visitor = new ClassTransformVisitor(writer);
