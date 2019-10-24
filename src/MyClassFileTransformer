@@ -7,12 +7,20 @@ import java.security.ProtectionDomain;
 
 public class MyClassFileTransformer implements ClassFileTransformer{
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
-                            ProtectionDomain protectionDomain, byte[] classfileBuffer)
+                            ProtectionDomain protectionDomain, byte[] bytes)
             throws IllegalClassFormatException {
             
-            //Something goes here...still working
+            if (#what to put here#){
+                //Based on code for agent in reference [5]
+                //Not sure what to put for the if statment
+                ClassReader reader = new ClassReader(bytes);
+                ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
+                ClassTransformVisitor visitor = new ClassTransformVisitor(writer);
+                reader.accept(visitor, 0);
+                return writer.toByteArray();
+            }
             
-            return classfileBuffer;
+            return bytes; //null?
 
     }
 }
