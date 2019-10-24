@@ -9,7 +9,7 @@ import java.security.ProtectionDomain;
 public class Agent {
   public static void premain(String agentArgs, Instrumentation inst) {
         inst.addTransformer(new Transformer() {
-            inst.addTransformer(new #our_transformer_class#);
+            inst.addTransformer(new MyClassFileTransformer);
         }
     }
 }
