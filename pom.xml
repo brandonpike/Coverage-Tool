@@ -24,7 +24,7 @@
                     <properties>
                         <property>
                             <name>listener</name>
-                            <value>ExecutionListener</value>
+                            <value>ourListener</value>
                         </property>
                     </properties>
                 </configuration>
