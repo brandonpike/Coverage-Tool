@@ -10,16 +10,13 @@ public class MyClassFileTransformer implements ClassFileTransformer{
                             ProtectionDomain protectionDomain, byte[] bytes)
             throws IllegalClassFormatException {
             
-            if (#what to put here#){
-                //Not sure what to put for the if statment
-                //class name or path?
-                // nameOfClass.startsWith("other/Stuff") or something like "other/Stuff".equals(s)
-                ClassReader reader = new ClassReader(bytes);
-                ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
-                ClassTransformVisitor visitor = new ClassTransformVisitor(writer);
-                reader.accept(visitor, 0);
-                return writer.toByteArray();
-            }
+            //removing if (#what to put here#){; hopefully not necessary
+                
+            ClassReader reader = new ClassReader(bytes);
+            ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
+            ClassTransformVisitor visitor = new ClassTransformVisitor(writer);
+            reader.accept(visitor, 0);
+            return writer.toByteArray();
             
             return bytes; //null?
 
