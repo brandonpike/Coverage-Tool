@@ -18,7 +18,7 @@
 
   <modules>
     <module>agent</module>
-    <module>test-bed</module>
+    <module>test-bed(joda)</module>
   </modules>
 
   <prerequisites>
