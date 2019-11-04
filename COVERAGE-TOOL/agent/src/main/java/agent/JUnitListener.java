@@ -37,7 +37,7 @@ public class JUnitListener extends RunListener {
 
 	// @Finished
 	public void testRunFinished(Result result) throws IOException {
-	        File fout = new File("stmt-cov.txt");
+	        File fout = new File("../stmt-cov.txt");
 	        FileOutputStream fos = new FileOutputStream(fout);
 	        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
 	
