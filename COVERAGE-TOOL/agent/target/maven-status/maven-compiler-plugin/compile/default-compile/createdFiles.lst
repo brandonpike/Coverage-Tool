@@ -1,0 +1,6 @@
+agent\ClassTransformVisitor.class
+agent\MethodTransformVisitor.class
+agent\CoverageCollector.class
+agent\ClassTransformer.class
+agent\Agent.class
+agent\JUnitListener.class
