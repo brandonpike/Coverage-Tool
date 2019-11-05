@@ -214,13 +214,7 @@
   </contributors>
 
   <dependencies>
-    <!--  [ <Pike edit> ] -->
-    <dependency>
-    	 <groupId>edu.utdallas</groupId>
-    	 <artifactId>code-coverage</artifactId>
-    	 <version>1.0-SNAPSHOT</version>
-    </dependency>
-	<!--  [ </Pike edit> ] -->
+    
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -313,7 +307,6 @@
             <property>
               <name>listener</name>
 			  <value>agent.JUnitListener</value>
-              <!--<value>edu.utdallas.JUnitExecutionListener</value>-->
             </property>
           </properties>
 		  <!--  [ </Pike edit> ] -->
