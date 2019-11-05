@@ -9,34 +9,31 @@ public class MethodTransformVisitor extends MethodVisitor implements Opcodes {
 	protected int lastVisitedLine;
 	protected String className;
 	
-    public MethodTransformVisitor(final MethodVisitor mv, String className) {
-        super(ASM5, mv);
-        this.className=className;
-    }
+	public MethodTransformVisitor(final MethodVisitor mv, String className) {
+		super(ASM5, mv);
+        	this.className=className;
+    	}
     
 	@Override
 	public void visitLineNumber(int line, Label start) {
 		if (line != 0) {
 	    	lastVisitedLine = line;
-	    	
 			mv.visitLdcInsn(className);
 			mv.visitLdcInsn(new Integer(line));
 			mv.visitMethodInsn(INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;", false);
-			mv.visitMethodInsn(INVOKESTATIC, "agent/CoverageCollector", "addMethodLine", "(Ljava/lang/String;Ljava/lang/Integer;)V", false);
-	}
-		
-    	super.visitLineNumber(line, start);
+			mv.visitMethodInsn(INVOKESTATIC, "agent/CoverageBank", "addMethodLine", "(Ljava/lang/String;Ljava/lang/Integer;)V", false);
+		}
+    		super.visitLineNumber(line, start);
 	}
 	
 	@Override
 	public void visitLabel(Label label) {
-		if (0 != lastVisitedLine) {
+		if (lastVisitedLine != 0) {
 			mv.visitLdcInsn(className);
 			mv.visitLdcInsn(new Integer(lastVisitedLine));
 			mv.visitMethodInsn(INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;", false);
-			mv.visitMethodInsn(INVOKESTATIC, "agent/CoverageCollector", "addMethodLine", "(Ljava/lang/String;Ljava/lang/Integer;)V", false);
+			mv.visitMethodInsn(INVOKESTATIC, "agent/CoverageBank", "addMethodLine", "(Ljava/lang/String;Ljava/lang/Integer;)V", false);
 		}
-
-    	super.visitLabel(label);
+    		super.visitLabel(label);
 	}
 }
