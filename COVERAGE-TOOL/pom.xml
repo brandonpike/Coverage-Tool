@@ -6,19 +6,17 @@
   <groupId>asm-sample</groupId>
   <artifactId>parent</artifactId>
   <version>0.1-SNAPSHOT</version>
-  <!--
-  <groupId>org.apache.commons</groupId>
-  <artifactId>commons-parent</artifactId>
-  <version>48</version>-->
   <packaging>pom</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+  <!-- DEFINE MODULES -->
   <modules>
     <module>agent</module>
-    <module>test-bed(joda)</module>
+	<!-- CHANGE test-bed(x) FOR x PROJECT UNDER TEST -->
+    <module>test-bed(common-dbutils)</module>
   </modules>
 
   <prerequisites>
