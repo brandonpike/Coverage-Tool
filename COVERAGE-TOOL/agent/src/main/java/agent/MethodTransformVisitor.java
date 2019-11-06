@@ -9,10 +9,10 @@ public class MethodTransformVisitor extends MethodVisitor implements Opcodes {
 	protected int lastVisitedLine;
 	protected String className;
 	
-	public MethodTransformVisitor(final MethodVisitor mv, String className) {
-		super(ASM5, mv);
-        	this.className=className;
-    	}
+    public MethodTransformVisitor(final MethodVisitor mv, String className) {
+        super(ASM5, mv);
+        this.className=className;
+    }
     
 	@Override
 	public void visitLineNumber(int line, Label start) {
@@ -23,7 +23,7 @@ public class MethodTransformVisitor extends MethodVisitor implements Opcodes {
 			mv.visitMethodInsn(INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;", false);
 			mv.visitMethodInsn(INVOKESTATIC, "agent/CoverageBank", "addMethodLine", "(Ljava/lang/String;Ljava/lang/Integer;)V", false);
 		}
-    		super.visitLineNumber(line, start);
+    	super.visitLineNumber(line, start);
 	}
 	
 	@Override
@@ -34,6 +34,6 @@ public class MethodTransformVisitor extends MethodVisitor implements Opcodes {
 			mv.visitMethodInsn(INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;", false);
 			mv.visitMethodInsn(INVOKESTATIC, "agent/CoverageBank", "addMethodLine", "(Ljava/lang/String;Ljava/lang/Integer;)V", false);
 		}
-    		super.visitLabel(label);
+    	super.visitLabel(label);
 	}
 }

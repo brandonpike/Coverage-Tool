@@ -8,6 +8,8 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
+import java.util.LinkedHashSet;
 import org.junit.runner.Description;
 import org.junit.runner.Result;
 import org.junit.runner.notification.RunListener;
@@ -38,7 +40,10 @@ public class JUnitListener extends RunListener {
 	        File fout = new File("../stmt-cov.txt");
 	        FileOutputStream fos = new FileOutputStream(fout);
 	        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
-			HashSet<String> test_bank = new HashSet<String>();
+			  // Output in order
+			Set<String> test_bank = new LinkedHashSet<String>();
+			  // Output in random order (faster)
+			// HashSet<String> test_bank = new HashSet<String>();
 	        for (String testName : CoverageBank.test_Coverages.keySet()) {
 	        	test_bank.add(testName + "\n");
 	        	HashMap<String, IntSet> caseCoverage = CoverageBank.test_Coverages.get(testName);
@@ -54,4 +59,5 @@ public class JUnitListener extends RunListener {
 				bw.write(s);
 	        bw.close();
 	}
+
 }
