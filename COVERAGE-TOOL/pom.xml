@@ -16,7 +16,7 @@
   <modules>
     <module>agent</module>
 	<!-- CHANGE test-bed(x) FOR x PROJECT UNDER TEST -->
-    <module>test-bed(common-dbutils)</module>
+    <module>test-bed</module>
   </modules>
 
   <prerequisites>
