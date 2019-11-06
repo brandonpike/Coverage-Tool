@@ -8,3 +8,9 @@ collect the statement coverage for its JUnit tests. Note that your tool should (
 method in the file system, and (3) be integrated with the Maven build system so that your tool
 can be triggered by simply typing “mvn test” after changing the pom.xml file of the project
 under test. More implementation details are shown in the appendix. 
+
+# Changing project under test
+Change the module name in (COVERAGE-TOOL/pom.xml : line 19) from test-bed to the folder name. Be sure to add the following
+to the new projects pom.xml
+
+# Pom adjustments for new projects
