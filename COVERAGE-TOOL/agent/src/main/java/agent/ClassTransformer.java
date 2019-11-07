@@ -9,7 +9,7 @@ import org.objectweb.asm.ClassWriter;
 public class ClassTransformer implements ClassFileTransformer {
     @Override
     public byte[] transform(ClassLoader classLoader, String s, Class<?> aClass, ProtectionDomain protectionDomain, byte[] bytes) throws IllegalClassFormatException {
-        if (s.startsWith("org/apache/commons/dbutils") || s.startsWith("org/joda/time")) {
+        if (s.startsWith("org/apache/commons/dbutils") || s.startsWith("org/joda/time") || "other/Stuff".equals(s)) {
     		ClassReader cr = new ClassReader(bytes);
     		ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
     		ClassTransformVisitor ca = new ClassTransformVisitor(cw);

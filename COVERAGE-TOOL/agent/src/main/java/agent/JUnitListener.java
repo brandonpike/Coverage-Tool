@@ -27,37 +27,76 @@ public class JUnitListener extends RunListener {
 	// @Before
 	public void testStarted(Description description) {
 		CoverageBank.testName = "[TEST] " + description.getClassName() + ":" + description.getMethodName();
+		//System.out.println(CoverageBank.testName);
 		CoverageBank.coverage = new HashMap<String, IntSet>();
 	}
 
 	// @After
 	public void testFinished(Description description) {
+		//System.out.println(" " + CoverageBank.testName + " | " + CoverageBank.coverage);
 		CoverageBank.test_Coverages.put(CoverageBank.testName, CoverageBank.coverage);
+		//System.out.println(CoverageBank.test_Coverages);
 	}
 
 	// @Finished
 	public void testRunFinished(Result result) throws IOException {
-	        File fout = new File("../stmt-cov.txt");
+		
+			// stmt-statistics.txt
+	        File fout = new File("../stmt-statistics.txt");
 	        FileOutputStream fos = new FileOutputStream(fout);
 	        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
-			  // Output in order
-			Set<String> test_bank = new LinkedHashSet<String>();
-			  // Output in random order (faster)
-			// HashSet<String> test_bank = new HashSet<String>();
+			double sumUsed = 0,
+				sumTotal = 0;
+			Set<String> bank = new LinkedHashSet<String>();
+			for(String cl : MethodTransformVisitor.totalGatheredStatements.keySet()){
+				double usedSize = getUsedSize(cl),
+					totalSize = getTotalSize(cl);
+				bank.add(cl + " : " + Double.toString(usedSize) + "/" + Double.toString(totalSize) + " (" + Double.toString((usedSize/totalSize)*100) + "%)\n");
+				sumUsed += usedSize;
+				sumTotal += totalSize;
+			}
+			bw.write("TOTAL COVERAGE = " + sumUsed + "/" + sumTotal + " (" + (sumUsed/sumTotal)*100 + "%)\n");
+			for(String s : bank)
+				bw.write(s);
+			bw.close();
+			
+			// stmt-cov.txt
+			fout = new File("../stmt-cov.txt");
+	        fos = new FileOutputStream(fout);
+	        bw = new BufferedWriter(new OutputStreamWriter(fos));
 	        for (String testName : CoverageBank.test_Coverages.keySet()) {
-	        	test_bank.add(testName + "\n");
+				bw.write(testName + "\n");
 	        	HashMap<String, IntSet> caseCoverage = CoverageBank.test_Coverages.get(testName);
 	            for (String className : caseCoverage.keySet()) {
 	            	int[] lines = caseCoverage.get(className).toIntArray();
 	            	Arrays.sort(lines);
 	            	for (int i = 0; i < lines.length; i++) {
-	                	test_bank.add(className + ":" + lines[i] + "\n");
+						bw.write(className + ":" + lines[i] + "\n");
 					}
 	            }
 	        }
-			for(String s : test_bank)
-				bw.write(s);
 	        bw.close();
 	}
-
+	
+	public double getTotalSize(String className){
+		double totalSize = (double)MethodTransformVisitor.totalGatheredStatements.get(className).size();
+		return totalSize;
+	}
+	
+	public double getUsedSize(String className){
+		double usedSize = 0.0;
+		IntSet lines = CoverageBank.gatheredStatements.get(className);
+		if (lines != null)
+			usedSize = (double)lines.size();
+		return usedSize;
+	}
+	
+	public double getCoverage(String className) {
+		IntSet lines = CoverageBank.gatheredStatements.get(className);
+		double totalSize = (double)MethodTransformVisitor.totalGatheredStatements.get(className).size(),
+			usedSize = 0.0;
+		if (lines != null)
+			usedSize = (double)lines.size();
+		return (usedSize/totalSize) * 100;
+	}
 }
