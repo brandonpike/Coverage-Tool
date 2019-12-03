@@ -28,7 +28,9 @@ public class MethodTransformVisitor extends MethodVisitor implements Opcodes {
 			mv.visitLdcInsn(new Integer(line));
 			mv.visitMethodInsn(INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;", false);
 			mv.visitMethodInsn(INVOKESTATIC, "agent/CoverageBank", "addMethodLine", "(Ljava/lang/String;Ljava/lang/Integer;)V", false);
+			//mv.visitFieldInsn(INVOKESTATIC, "agent/CoverageBank", add, String desc)
 		}
+		//System.out.print(start.getOffset() + " ");
     	super.visitLineNumber(line, start);
 	}
 	

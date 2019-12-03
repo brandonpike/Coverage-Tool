@@ -16,6 +16,8 @@ import org.junit.runner.notification.RunListener;
 import it.unimi.dsi.fastutil.ints.IntSet;
 
 public class JUnitListener extends RunListener {
+	
+	public static double timeSpent = 0;
 
 	// @init
 	public void testRunStarted(Description description) throws Exception {
