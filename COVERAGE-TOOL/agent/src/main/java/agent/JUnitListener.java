@@ -14,13 +14,17 @@ import org.junit.runner.Description;
 import org.junit.runner.Result;
 import org.junit.runner.notification.RunListener;
 import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.LinkedHashSet;
 
 public class JUnitListener extends RunListener {
 	
 	public static double timeSpent = 0;
+			HashMap<String[], LinkedHashSet<String>> gV;// = MethodTransformVisitor.gatheredVariables;
+	
 
 	// @init
 	public void testRunStarted(Description description) throws Exception {
+		gV = MethodTransformVisitor.gatheredVariables;
 		if (CoverageBank.test_Coverages == null) {
 			CoverageBank.test_Coverages = new HashMap<String, HashMap<String, IntSet>>();
 		}
@@ -77,6 +81,22 @@ public class JUnitListener extends RunListener {
 					}
 	            }
 	        }
+	        bw.close();
+			
+			// invariants.txt
+			fout = new File("../invariants.txt");
+	        fos = new FileOutputStream(fout);
+	        bw = new BufferedWriter(new OutputStreamWriter(fos));
+			int line = 1;
+			bank = new LinkedHashSet<String>();
+			bank.add(gV.size()+"\n");
+			for(String[] ks : gV.keySet()){
+				bank.add((line++) + ". [" + ks[0] + ", " + ks[1] + "]\n");
+				for(String s : gV.get(ks))
+					bank.add((line++) + ". " + s + "\n");
+			}
+			for(String s : bank)
+				bw.write(s);
 	        bw.close();
 	}
 	
