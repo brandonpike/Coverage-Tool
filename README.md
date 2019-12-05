@@ -14,7 +14,8 @@ Change the module name in (COVERAGE-TOOL/pom.xml : line 19) from test-bed to the
 to the new projects pom.xml
 
 # Pom adjustments for new projects
-```  <!--  [ <Pike edit> ] -->
+```  
+  <!--  [ <Pike edit> ] -->
   <parent>
     <groupId>asm-sample</groupId>
     <artifactId>parent</artifactId>
