@@ -1,0 +1,88 @@
+1. [org/apache/commons/dbutils/OutParameter, register]
+2. index = 2
+3. index != 0
+4. [org/apache/commons/dbutils/wrappers/SqlNullCheckedResultSet, setNullInt]
+5. nullInt = 10
+6. nullInt != 0
+7. [org/apache/commons/dbutils/TestBean, setNullPrimitiveTest]
+8. i = 0
+9. i = -1 mod -1
+10. [org/apache/commons/dbutils/handlers/columns/FloatColumnHandler, apply]
+11. columnIndex = 1
+12. columnIndex != 0
+13. [org/apache/commons/dbutils/handlers/columns/StringColumnHandler, apply]
+14. columnIndex = {1,2,9}
+15. columnIndex >= 1
+16. columnIndex <= 9
+17. columnIndex != 0
+18. [org/apache/commons/dbutils/MockResultSet, getDouble]
+19. columnIndex = 10
+20. columnIndex != 0
+21. [org/apache/commons/dbutils/BeanProcessor, processColumn]
+22. index = {1,2,3,5,6,7,8,9,10}
+23. index >= 1
+24. index <= 10
+25. index != 0
+26. [org/apache/commons/dbutils/handlers/columns/BooleanColumnHandler, apply]
+27. columnIndex = 1
+28. columnIndex != 0
+29. [org/apache/commons/dbutils/handlers/columns/SQLXMLColumnHandler, apply]
+30. columnIndex = 1
+31. columnIndex != 0
+32. [org/apache/commons/dbutils/wrappers/SqlNullCheckedResultSet, setNullDouble]
+33. nullDouble = 10.0
+34. nullDouble != 0
+35. [org/apache/commons/dbutils/TestBean, setColumnProcessorDoubleTest]
+36. d = 13.0
+37. d != 0
+38. [org/apache/commons/dbutils/TestBean, setIntTest]
+39. i = {1,3}
+40. i >= 1
+41. i <= 3
+42. i != 0
+43. [org/apache/commons/dbutils/handlers/columns/DoubleColumnHandler, apply]
+44. columnIndex = {10,1}
+45. columnIndex >= 1
+46. columnIndex <= 10
+47. columnIndex != 0
+48. [org/apache/commons/dbutils/OutParameter, setValue]
+49. index = 2
+50. index != 0
+51. [org/apache/commons/dbutils/handlers/columns/ByteColumnHandler, apply]
+52. columnIndex = 1
+53. columnIndex != 0
+54. [org/apache/commons/dbutils/handlers/columns/ShortColumnHandler, apply]
+55. columnIndex = 1
+56. columnIndex != 0
+57. [org/apache/commons/dbutils/handlers/columns/TimestampColumnHandler, apply]
+58. columnIndex = 1
+59. columnIndex != 0
+60. [org/apache/commons/dbutils/MockResultSet, getInt]
+61. columnIndex = {5,6,8}
+62. columnIndex >= 5
+63. columnIndex <= 8
+64. columnIndex != 0
+65. [org/apache/commons/dbutils/MockResultSet, getObject]
+66. columnIndex = {1,2,3,5,6,7,8,9,10,4}
+67. columnIndex >= 1
+68. columnIndex <= 10
+69. columnIndex != 0
+70. [org/apache/commons/dbutils/wrappers/SqlNullCheckedResultSet, setNullFloat]
+71. nullFloat = 10.0
+72. nullFloat != 0
+73. [org/apache/commons/dbutils/handlers/columns/LongColumnHandler, apply]
+74. columnIndex = 1
+75. columnIndex != 0
+76. [org/apache/commons/dbutils/MockResultSet, getString]
+77. columnIndex = {1,2,9,4}
+78. columnIndex >= 1
+79. columnIndex <= 9
+80. columnIndex != 0
+81. [org/apache/commons/dbutils/handlers/columns/IntegerColumnHandler, apply]
+82. columnIndex = {5,6,8,1}
+83. columnIndex >= 1
+84. columnIndex <= 8
+85. columnIndex != 0
+86. [org/apache/commons/dbutils/wrappers/SqlNullCheckedResultSet, setNullLong]
+87. nullLong = 10
+88. nullLong != 0
