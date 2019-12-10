@@ -36,7 +36,7 @@ public class MethodTransformVisitor extends MethodVisitor implements Opcodes {
 	public void visitCode() {
 		String[] k = {className, curMethod};
 		int i = 1;
-		if(!curMethod.equals("<init>")){// || curMethod.equals("add")){
+		if(!curMethod.equals("<init>") && !curMethod.equals("createCaseInsensitiveHashMap")){// || curMethod.equals("add")){
 			if(params != null){
 				int index = 1;
 				for(String s : params){
