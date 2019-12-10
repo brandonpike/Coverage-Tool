@@ -56,8 +56,8 @@ public class CoverageBank {
 			vars.put(index, var);
 			varValues.put(k, vars);
 		}
-		for(Integer key : vars.keySet())
-			System.out.println(vars.get(key));
+		//for(Integer key : vars.keySet())
+			//System.out.println(vars.get(key));
 	}
 	
 	public static void trace(String cl, String mthd, Integer index, Integer x){
@@ -118,8 +118,8 @@ public class CoverageBank {
 			vars.put(index, var);
 			varValues.put(k, vars);
 		}
-		for(Integer key : vars.keySet())
-			System.out.println(vars.get(key));
+		//for(Integer key : vars.keySet())
+			//System.out.println(vars.get(key));
 	}
 	
 	public static void trace(String cl, String mthd, Integer index, Double x){
@@ -140,8 +140,8 @@ public class CoverageBank {
 			vars.put(index, var);
 			varValues.put(k, vars);
 		}
-		for(Integer key : vars.keySet())
-			System.out.println(vars.get(key));
+		//for(Integer key : vars.keySet())
+			//System.out.println(vars.get(key));
 	}
 	
 	public static void passLine(String className, Integer line){

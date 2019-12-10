@@ -91,7 +91,7 @@ public class JUnitListener extends RunListener {
 			for(Integer key : values.keySet()){ // for all variable values
 				// for this variables values
 				String s = values.get(key);
-				System.out.println(names.get(key) + " : " + s);
+				//System.out.println(names.get(key) + " : " + s);
 				String [] ss = s.split(",");
 				int confidence = Math.min(7, ss.length);
 				String sConstantV = "~";
@@ -229,7 +229,6 @@ public class JUnitListener extends RunListener {
 						sValueSetCount++;
 					}
 				}
-				System.out.println(valueSetCount + " | " + confidence);
 				// Ints
 				// Constants
 				if(constant && constantCount >= confidence)
@@ -291,8 +290,8 @@ public class JUnitListener extends RunListener {
 					invars.add(names.get(key) + " = " + adding);
 				}
 			}
-			for(String test : invars)
-				System.out.println(test);
+			//for(String test : invars)
+				//System.out.println(test);
 			invariants.put(ks, invars);
 		}
 		bank = new LinkedHashSet<String>();
