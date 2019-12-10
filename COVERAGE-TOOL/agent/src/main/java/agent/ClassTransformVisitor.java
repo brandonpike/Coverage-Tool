@@ -3,6 +3,7 @@ package agent;
 import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Opcodes;
 
 public class ClassTransformVisitor extends ClassVisitor implements Opcodes {
@@ -21,11 +22,18 @@ public class ClassTransformVisitor extends ClassVisitor implements Opcodes {
     @Override
     public MethodVisitor visitMethod(final int access, final String name, final String desc, final String signature, final String[] exceptions) {
         MethodVisitor mv = cv.visitMethod(access, name, desc, signature, exceptions);
+		//System.out.println(" [Method] " + name + ": " + access + " | " + desc);
 		if(desc.equals("(J)V")){
-			//System.out.println(" [Method] " + name + ": " + access + " | " + desc + " | " + signature + " | " + exceptions + " (" + exceptions.length +")");
 			//mv.visitLocalVariable(name, "J");
 		}
-		return mv == null ? null : new MethodTransformVisitor(mv, className, name);
+		return mv == null ? null : new MethodTransformVisitor(mv, className, name, desc);
     }
-
+	
+	@Override
+	public FieldVisitor visitField(int access, String name, String desc, String signature, Object value){
+		FieldVisitor fv = cv.visitField(access, name, desc, signature, value);
+		//System.out.println("VISITFIELD");
+		//System.out.println(" [name] " + name + " [desc] " + desc + " [val] " + value + );
+		return fv == null ? null : fv;
+	}
 }
